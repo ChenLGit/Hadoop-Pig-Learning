@@ -1,0 +1,13 @@
+-- leftjoin.pig
+daily = load 'NYSE_daily' as (
+
+
+-- Join small data to big data
+
+
+
+-- Join sorted data
+
+
+
+-Join skewed data
