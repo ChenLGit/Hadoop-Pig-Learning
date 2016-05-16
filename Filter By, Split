@@ -1,0 +1,29 @@
+------ Filter ------
+-- Removes data if it does not match some criteria
+    – This could be a basic expression or a compound expression that looks at multiple fields
+    – Predicates can contain the equality operators you expect, including == to test equality, and !=, >, >=, <, and <=
+
+Bag2 = FILTER Bag1 BY expression;
+
+-- GOOG and other stock data
+GOOG = FILTER stocks BY symbol == ‘GOOG’
+not = FILTER stocks BY symbol != ‘GOOG’
+  – Comparisons can be used for all scalar types
+  – For tuples and maps, just == and !=
+  
+-- For chararrays, users can test to see whether the chararray matches a Regular Expression:
+GOOG = FILTER stocks BY symbol matches ‘GOO.*’
+not = FILTER stocks BY not symbol matches ‘GOO.*’
+
+------ Split ------
+Partition in to several relations (GPA High and low)
+A = LOAD ‘input_path/file’ as (name:chararray, age:int, gpa:float);
+GPA_high = FILTER A by gpa>=3.5;
+GPA_mid = FILTER A by 2.5 <=gpa AND gpa<3.5;
+GPA_low = FILTER A by gpa<2.5;
+****** A simpler way to write this… ******
+SPLIT Bag1 INTO bag2 IF expression, bag3 if expression [,…]
+example:
+SPLIT A INTO GPA_high IF gpa>=3.5, GPA_mid IF gpa>=2.5 AND gpa<3.5, GPA_low IF gpa<2.5;
+
+
