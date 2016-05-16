@@ -1,0 +1,14 @@
+------ Nested Foreach ------
+Foreach can also apply a set of relational operations to each record in your pipeline called nested/inner foreach.
+
+Example:
+-- Find number of unique stock symbols for each exchange in the NYSE_daily data
+-- distinct_symbols.pig
+daily = LOAD 'NYSE_daily' AS (exchange, symbol); 
+grpd = group daily by exchange;
+uniqcnt = FOREACH grpd { 
+          sym = daily.symbol; 
+          uniq_sym = DISTINCT sym; 
+          GENERATE group, COUNT(uniq_sym);
+          };
+      
