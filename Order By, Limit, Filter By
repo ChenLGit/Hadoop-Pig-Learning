@@ -4,6 +4,7 @@
 -- run from the local mode 
 daily = LOAD '/home/hadoop/Documents/exercise/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, volume:int, adj_close:float); --using PigStorage('\t');
 daily_sub = FOREACH daily GENERATE symbol, date, (close - open) as gain; 
+-- Generate a new table with three columns named "symbol", "data", "(close - open)"
 ordered = ORDER daily_sub BY gain DESC;
 Top_N = LIMIT ordered 50;
 DUMP Top_N;
