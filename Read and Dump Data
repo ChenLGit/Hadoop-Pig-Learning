@@ -4,6 +4,7 @@
 daily = LOAD '/home/hadoop/Documents/exercise/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, 	volume:int, adj_close:float); --using PigStorage('\t');
 DUMP daily; 
 
+DUMP is samilar with print function in Python.
 
 -- Run on cluster mode 
 daily = LOAD '/pig/input/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, 	volume:int, adj_close:float); --using PigStorage('\t');
