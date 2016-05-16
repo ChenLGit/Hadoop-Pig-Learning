@@ -1,0 +1,12 @@
+------ Cogroup ------
+The cogroup is a generalization of group. It collects records of n inputs based on the same key.
+The result is a record with a key and one bag for each input.
+
+Example:
+A = LOAD 'input1' as (id:int, val:float);
+B = LOAD 'input2' as (id:int, val2:int);
+C = COGROUP A BY id, B BY id;
+DESCRIBE C;
+  C: {Group; int, A: {id: int, val: float}, B: {id: int, val2: int}}
+
+
