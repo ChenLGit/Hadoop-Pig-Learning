@@ -1,6 +1,11 @@
--- using nest FOREACH to get the top 3 dividends
+-- Sometimes you have data in a bag or a tuple and you want to remove that level of nesting.
+-- A foreach with a flatten produces a cross product of every record in the bag with all of the other expressions in the generate statement.
+grp_stocks = GROUP stocks BY symbol;
+stocks1 = FOREACH grp_stocks GENERATE FLATTEN(stocks);
 
---run from the local mode 
+-- Using nest FOREACH to get the top 3 dividends
+
+-- Run from the local mode 
 divs = LOAD '/home/hadoop/Documents/exercise/NYSE_daily.txt' as (exchange:chararray, symbol:chararray, date:chararray, dividends:float); 
 grpd = GROUP divs by symbol; 
 top3 = FOREACH grpd { 
@@ -9,7 +14,7 @@ top3 = FOREACH grpd {
 	GENERATE group, flatten(top); 
 	};
 
---run from the cluster mode 
+-- Run from the cluster mode 
 divs = LOAD '/pig/input/NYSE_daily.txt' as (exchange:chararray, symbol:chararray, date:chararray, dividends:float); 
 grpd = GROUP divs by symbol; 
 top3 = FOREACH grpd { 
