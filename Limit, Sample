@@ -1,0 +1,17 @@
+------ Limit ------
+-- limit is used to see a limit number of results
+Practice:
+limit.pig
+divs = LOAD 'NYSE_dividends';
+first10 = LIMIT divs 10;
+
+
+----- Sample ------
+-- sample is used to get a sample of the data and return a percentage of rows
+Syntex:
+Bag2 = Sample Bag1 N; 
+-- N is between 0‐1
+Practice:
+sample.pig
+divs = LOAD 'NYSE_dividends';
+some = SAMPLE divs 0.1;
