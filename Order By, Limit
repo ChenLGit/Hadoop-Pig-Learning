@@ -1,3 +1,13 @@
+------ Order By ------
+Used ORDER… BY to sort the records in a bad(very much like SQL)
+– Default order is ascending. Add DESC sorts desending
+– Data is sorted based on the types of the indicated fields:
+numeric values are sorted numerically, chararray fields are sorted lexically
+--- Syntax
+Bag2 = Order Bag1 By field [DESC];
+
+
+------ Practice ------
 -- print the top 50 gain stocks and dates
 -- set DEFAULT PARALLEL 100;
 
