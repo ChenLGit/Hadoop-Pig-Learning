@@ -1,0 +1,12 @@
+-- Automatically generated a field : group
+grp_stocks = group stocks by symbol;
+count_stocks = foreach grp_stocks generate group as group, COUNT(stocks) as count;
+
+-- Describe data:
+describe grp_stocks;
+/* output:
+grp_stocks: {group: chararray, stock:{(symbol: chararray, date: chararray, close: float)}}
+*/
+
+-- Group by with more than Two Field:
+grp_stocks = group stocks by (symbol, date);
