@@ -1,0 +1,6 @@
+{
+  "name": "Hadoop-pig-learning",
+  "tagline": "This is a program to document how and what I learned about Hadoop Pig",
+  "body": "### Welcome to GitHub Pages.\r\nPig is a scripting language, which is flexible for expressing complicated data flows. It does not require schema definitions and is great for transforming and cleaning raw data before it is used by other systems.\r\nPros: Complex data transformations; Data cleansing and ETL (extract, transform, load); Customizable (file/data formats, UDFs <piggybank>)            Cons: Non‐SQL Pig is a barrier to SQL users\r\n\r\n### Authors and Contributors\r\nChen Liu is a Ph.D. candidate in Systems Engineering in the School of Systems and Enterprises. Chen's current research focus is on decision making, risk management, marketing analysis, and organizational strategy, where he uses multiple modeling and simulation techniques, statistical analysis methods, as well as machine learning techniques. \r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
