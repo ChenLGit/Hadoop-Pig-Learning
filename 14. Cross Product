@@ -1,0 +1,12 @@
+------ Cross Product ------
+Let us create m x n cross products of the m records from one data set and the n records from another.
+Can create an enormous amount of data!
+
+Example:
+  stocks = LOAD ‘…’ AS (exchange, …);
+  divs = LOAD ‘…’ AS (exchange, …);
+  stocks_divs = CROSS stocks, divs;
+  DESCRIBE stocks_divs
+  
+  stocks_divs: {stocks::exchange, … divs:: exchange,..}
+  

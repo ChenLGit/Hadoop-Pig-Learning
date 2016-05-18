@@ -1,0 +1,31 @@
+------ Union ------
+The union is used to put two data sets together by CONCATENATING them instead of joining them.
+*** More Flexible than SQL Union
+Example:
+A = LOAD '/user/me/data/files/input1';
+B = LOAD '/user/someoneelse/info/input2';
+C = UNION A, B;
+
+--- Consider union with same schema ---
+A = LOAD 'input1' AS (x:int, y:float);
+B = LOAD 'input2' AS (x:int, y:float);
+C = UNION A, B;
+DESCRIBE C;
+
+C: {x:int, y:float}
+
+--- Different Schema but can reconcile field types ---
+A = LOAD 'input1' AS (x:int, y:float);
+B = LOAD 'input2' AS (x:int, y:double);
+C = UNION A, B;
+DESCRIBE C;
+
+C: {x:int, y:double}
+
+--- If can’t reconcile field types ---
+A = LOAD 'input1' AS (x:int, y:float);
+B = LOAD 'input2' AS (x:int, y:chararray);
+C = UNION A, B;
+DESCRIBE C;
+
+Schema for C unknown.

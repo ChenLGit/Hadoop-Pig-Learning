@@ -1,0 +1,33 @@
+------ Order By ------
+Used ORDER… BY to sort the records in a bad(very much like SQL)
+– Default order is ascending. Add DESC sorts desending
+– Data is sorted based on the types of the indicated fields:
+numeric values are sorted numerically, chararray fields are sorted lexically
+--- Syntax
+Bag2 = Order Bag1 By field [DESC];
+
+
+------ Practice ------
+-- print the top 50 gain stocks and dates
+-- set DEFAULT PARALLEL 100;
+
+-- run from the local mode 
+daily = LOAD '/home/hadoop/Documents/exercise/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, volume:int, adj_close:float); --using PigStorage('\t');
+daily_sub = FOREACH daily GENERATE symbol, date, (close - open) as gain; 
+-- Generate a new table with three columns named "symbol", "data", "(close - open)"
+ordered = ORDER daily_sub BY gain DESC;
+Top_N = LIMIT ordered 50;
+DUMP Top_N;
+
+
+-- run from the cluster mode 
+daily = LOAD '/pig/input/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, volume:int, adj_close:float); --using PigStorage('\t');
+daily_sub = FOREACH daily GENERATE symbol, date, (close - open) as gain; 
+ordered = ORDER daily_sub BY gain DESC;
+Top_N = LIMIT ordered 50;
+DUMP Top_N;
+
+
+-- filter 
+-- filt_sub = FILTER daily BY symbol = 'CME';
+-- DUMP filt_sub;

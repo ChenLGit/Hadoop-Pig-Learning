@@ -1,0 +1,6 @@
+– DESCRIBE and ILLUSTRATE are good functions to debug
+– GROUP BY creates useful bags
+– …but FLATTEN simplifies schemas..
+– FILTER data early and often to reduce the data
+  • clean your data
+  cleansed = FILTER mydata by field1 is not null;

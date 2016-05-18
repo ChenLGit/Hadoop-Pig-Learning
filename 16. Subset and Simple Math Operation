@@ -1,0 +1,13 @@
+--Exercise2, read data and generate subset with data transformation(simple math operation)
+
+-- run from local mode 
+daily = load '/home/hadoop/Documents/exercise/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, volume:int, adj_close:float);
+daily_sub = FOREACH daily GENERATE symbol, date, (close - open) as gain; 
+dump daily_sub; 
+
+
+-- run from cluster mode 
+daily = load '/pig/input/NYSE_daily.txt' as (exchange:chararray, symbol:chararray,  date:chararray, open:float, high:float, low:float, close:float, volume:int, adj_close:float);
+daily_sub = FOREACH daily GENERATE symbol, date, (close - open) as gain; 
+dump daily_sub; 
+

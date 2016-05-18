@@ -1,0 +1,16 @@
+-- Distinct function is used to eliminates duplicate records in a bag; All fields must be equal to be consider a duplicate.
+Bag2 = DISTINCT Bag1 PARALLEL n;
+
+-- List all stock symbols
+symbols = FOREACH stocks GENERATE symbol;
+uniques = DISTINCT symbols parallel n;
+DUMP uniques;
+(GOOG)
+(FB)
+…
+-- All fields in the records are checked for uniqueness. If you only want to treat some fields as unique use group by.
+
+-- Count *** is needed to  put what we want to count into a bag
+-- Use the special "GROUP.. All" to put all records in a single group
+grp_all = GROUP stocks ALL;
+all_count= FOREACH grp_all GENERATE COUNT(stocks)

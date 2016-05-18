@@ -1,0 +1,17 @@
+Scalar Type
+– Similar to Java language : int, long, float, double, chararray, bytearray
+
+Complex Type
+– map, tuple, bag
+  • All of these types can contain data of any type,including other complex types.
+  • Usually get complex type after some relational operations.
+  
+Map
+– A map is a set of key/value pairs.              e.g ['name'#'bob‘, 'age'#55]
+
+Tuple
+– A tuple is a fixed‐length, ordered collection of Pig data elements; divided into fields, with each field containing
+one data element (can be any type).               e.g (name:chararray, age:int, gpa:float)= (John, 15, 3.6)
+
+Bag
+– A bag is a unordered collection of tuples.      e.g {(John, 15, 3.6) ,(Justin, 16,4.0),…}
